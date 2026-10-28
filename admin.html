@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Админ-панель — Старинная Коллекция</title><link rel="stylesheet" href="css/style.css"><link rel="stylesheet" href="css/auth.css">
+<style>
+.admin-wrap{max-width:1050px;margin:35px auto;padding:20px}.admin-head{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.admin-panel{background:#f3eee2;color:#242820;border:1px solid #a8843f;border-radius:12px;padding:22px;margin:20px 0}
+.admin-form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.admin-form label{display:grid;gap:6px}.admin-form input,.admin-form textarea,.admin-form select{width:100%;padding:10px;border:1px solid #b8ad96;border-radius:5px;font:inherit}.admin-form textarea{min-height:90px}.wide{grid-column:1/-1}.admin-actions{display:flex;gap:8px;flex-wrap:wrap}.admin-btn{border:0;background:#1f2d27;color:#fff;padding:10px 14px;border-radius:5px;cursor:pointer}.admin-btn.danger{background:#7a2e2a}.admin-product{display:flex;justify-content:space-between;gap:15px;align-items:center;border-top:1px solid #d3c7ac;padding:12px 0}.admin-product small{display:block;color:#68685e}.admin-status{padding:10px 0;color:#7a2e2a}.admin-status.good{color:#246b37}
+@media(max-width:600px){.admin-form{grid-template-columns:1fr}.wide{grid-column:auto}.admin-product{align-items:flex-start;flex-direction:column}}
+</style></head><body><main class="admin-wrap">
+<div class="admin-head"><div><h1>Админ-панель</h1><p>Управление каталогом «Старинная Коллекция»</p></div><a class="btn-phone" href="index.html">← На сайт</a></div>
+<div class="admin-panel"><h2>Доступ</h2><p id="admin-status" class="admin-status">Проверяем права доступа…</p><button id="import-catalog" class="admin-btn" hidden>Импортировать исходный каталог</button></div>
+<section id="admin-content" hidden>
+<div class="admin-panel"><h2 id="form-title">Добавить товар</h2>
+<form id="product-form" class="admin-form">
+<input id="p-id" type="hidden"><label>Название<input id="p-name" required maxlength="180"></label>
+<label>Цена<input id="p-price" required placeholder="1 500 ₽"></label>
+<label>Категория<input id="p-category" required value="Разное"></label><label>Год / период<input id="p-year"></label>
+<label>Ссылка на фото<input id="p-image" type="url" placeholder="https://…"></label><label>Ссылка на объявление<input id="p-link" type="url" placeholder="https://…"></label>
+<label class="wide">Описание<textarea id="p-description"></textarea></label>
+<div class="admin-actions wide"><button class="admin-btn" type="submit">Сохранить товар</button><button class="admin-btn" type="button" id="cancel-edit" hidden>Отмена</button></div>
+</form></div>
+<div class="admin-panel"><h2>Товары</h2><p id="product-count"></p><div id="product-list"></div></div>
+</section></main>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="js/config.js"></script><script src="js/supabase-store.js"></script><script src="js/catalog.js"></script><script src="js/admin.js"></script></body></html>
